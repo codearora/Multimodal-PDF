@@ -9,11 +9,11 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchTextContent = async (text) => {
   try {
     const response = await axios.post(
-      'https://api-inference.huggingface.co/models/gpt1',
+      'https://api-inference.huggingface.co/models/gpt2',
       { inputs: text },
       {
         headers: {
-          Authorization: `Bearer ${process.env.YOUR_ACCESS_TOKEN}`,
+          Authorization: 'Bearer ${process.env.YOUR_ACCESS_TOKEN}',
           'Content-Type': 'application/json'
         }
       }
@@ -64,6 +64,7 @@ const App = () => {
     try {
       const sections = text.split('\n').filter((line) => line.trim().length > 0);
       const generatedContent = await fetchTextContent(text);
+      console.log(generatedContent);
       setContent(generatedContent);
 
       const imagePromises = sections.map((section) => fetchUnsplashImage(section));
