@@ -5,16 +5,9 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 import axios from 'axios';
 
 const fetchTextContent = async (text) => {
-  // Use a free text generation API or a hosted Hugging Face model
-  // Here is an example using Hugging Face's hosted inference API
   const response = await axios.post(
     'https://api-inference.huggingface.co/models/gpt2',
-    { inputs: text },
-    {
-      headers: {
-        Authorization: `Bearer YOUR_HUGGINGFACE_API_KEY`,
-      },
-    }
+    { inputs: text }
   );
   return response.data[0].generated_text;
 };

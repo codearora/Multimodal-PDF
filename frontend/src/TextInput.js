@@ -10,7 +10,11 @@ const TextInput = ({ onSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter your text here" />
+            <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="Enter your text here"
+            />
             <button type="submit">Generate PDF</button>
         </form>
     );
