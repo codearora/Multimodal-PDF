@@ -26,8 +26,9 @@ This project is a web application that takes user input, generates multi-modal c
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/multimodal-pdf-generator.git
-   cd multimodal-pdf-generator
+   git clone https://github.com/codearora/Multimodal-PDF.git
+   cd Multimodal-PDF
+   cd frontend
    ```
 
 2. Install the dependencies:
