@@ -11,7 +11,7 @@ const fetchTextContent = async (text) => {
       inputs: text,
     }, {
       headers: {
-        Authorization: 'Bearer -',
+        Authorization: 'Bearer REACT_APP_HUGGING_FACE_API_KEY',
         'Content-Type': 'application/json'
       }
     });
