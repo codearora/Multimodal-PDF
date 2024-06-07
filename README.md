@@ -4,7 +4,8 @@
 This project is a web application that takes user input, generates multi-modal content using AI APIs, and produces a downloadable PDF. The application leverages React for the frontend, the Hugging Face API for text generation, and the Unsplash API for image generation.
 
 ## Features
-[Screenshot (12)](https://github.com/codearora/Multimodal-PDF/assets/91114793/70121146-c01f-4f5f-859a-fcf726ec6571)
+
+![Screenshot (12)](https://github.com/codearora/Multimodal-PDF/assets/91114793/5f033344-a883-428c-8780-9ca3164fd309)
 
 ![Screenshot (13)](https://github.com/codearora/Multimodal-PDF/assets/91114793/cec11f03-9aa1-4dfe-a03a-df2dd559fd78)
 
