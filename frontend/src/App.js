@@ -3,21 +3,18 @@ import TextInput from './TextInput';
 import PDFGenerator from './PDFGenerator';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import axios from 'axios';
-
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import './App.css';
 
 const fetchTextContent = async (text) => {
   try {
-    const response = await axios.post(
-      'https://api-inference.huggingface.co/models/gpt2',
-      { inputs: text },
-      {
-        headers: {
-          Authorization: 'Bearer ${process.env.YOUR_ACCESS_TOKEN}',
-          'Content-Type': 'application/json'
-        }
+    const response = await axios.post('https://api-inference.huggingface.co/models/Qiliang/bart-large-cnn-samsum-ChatGPT_v3', {
+      inputs: text,
+    }, {
+      headers: {
+        Authorization: 'Bearer -',
+        'Content-Type': 'application/json'
       }
-    );
+    });
     if (response.data && response.data.length > 0) {
       return response.data[0].generated_text;
     } else {
@@ -29,12 +26,12 @@ const fetchTextContent = async (text) => {
   }
 };
 
-const fetchUnsplashImage = async (text, retryCount = 0) => {
+const fetchUnsplashImage = async (text) => {
   try {
     const response = await axios.get('https://api.unsplash.com/search/photos', {
       params: { query: text },
       headers: {
-        Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_ACCESS_KEY}`,
+        Authorization: 'Client-ID -',
       },
     });
     if (response.data.results.length > 0) {
@@ -43,14 +40,8 @@ const fetchUnsplashImage = async (text, retryCount = 0) => {
       throw new Error('No image found');
     }
   } catch (error) {
-    if (error.response && error.response.status === 429 && retryCount < 3) {
-      console.warn(`Rate limit hit, retrying... (${retryCount + 1})`);
-      await delay(1000 * (retryCount + 1)); // Delay with exponential backoff
-      return fetchUnsplashImage(text, retryCount + 1);
-    } else {
-      console.error('Error fetching image:', error);
-      return 'https://via.placeholder.com/150'; // Placeholder image URL
-    }
+    console.error('Error fetching image:', error);
+    return 'https://via.placeholder.com/150'; // Placeholder image URL
   }
 };
 
@@ -64,7 +55,6 @@ const App = () => {
     try {
       const sections = text.split('\n').filter((line) => line.trim().length > 0);
       const generatedContent = await fetchTextContent(text);
-      console.log(generatedContent);
       setContent(generatedContent);
 
       const imagePromises = sections.map((section) => fetchUnsplashImage(section));
@@ -78,7 +68,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <h1>Multi-Modal PDF Generator</h1>
       <TextInput onSubmit={handleTextSubmit} />
       {loading && <p>Generating content and fetching images...</p>}

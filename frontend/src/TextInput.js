@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TextInput.css';
 
 const TextInput = ({ onSubmit }) => {
     const [text, setText] = useState('');
@@ -9,13 +10,14 @@ const TextInput = ({ onSubmit }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="text-input-form">
             <textarea
+                className="text-input"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder="Enter your text here"
+                placeholder="Enter your text here..."
             />
-            <button type="submit">Generate PDF</button>
+            <button type="submit" className="submit-button">Generate PDF</button>
         </form>
     );
 };
