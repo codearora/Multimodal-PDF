@@ -134,5 +134,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Unsplash](https://unsplash.com/)
 - [@react-pdf/renderer](https://react-pdf.org/)
 
+## Contact
+
+- jaiarora6377@gmail.com
+- https://www.linkedin.com/in/jaiarora6377
 
 This `README.md` file provides a comprehensive overview of the project, including installation instructions, usage, project structure, and deployment steps. Make sure to replace placeholders like `your-username`, `your_hugging_face_api_key`, and `your_unsplash_access_key` with the appropriate values.
